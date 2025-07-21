@@ -1,7 +1,7 @@
 {
   "name": "auraflow",
   "homepage": "https://Tejsvi78.github.io/AuraFlow/",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
