@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Ribeye&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+html {
+    font-family: "Tinos", serif;
+    font-weight: 500;
+    /* font-style: italic; */
+    scroll-behavior: smooth;
+    cursor: default;
+}
+
+.main_app {
+    perspective: 1px;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    background-image: linear-gradient(220.55deg, #B7DCFF 0%, #FFA4F6 100%);
+}
+
+.cards {
+    position: relative;
+    z-index: 1;
+    /* padding: 50vh 2rem; */
+    text-align: center;
+    font-size: 2rem;
+}
+
+.navbar {
+    height: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    font-size: 1.5rem;
+    background-image: linear-gradient(135deg, rgba(15, 14, 14, 0.301), rgba(34, 28, 28, 0.075));
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    z-index: 9;
+    animation: navScroll linear forwards;
+    animation-timeline: scroll();
+    animation-range: 0vh 10vh;
+}
+
+.navbar_bg {
+    height: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0px -10px 20px -15px rgb(255, 255, 255);
+    background: transparent;
+    backdrop-filter: blur(10px);
+    z-index: 8;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.navbar.scrolled {
+    transition: all 2s;
+    justify-content: space-between;
+    color: rgb(70, 240, 70);
+    background-color: black;
+    box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.521);
+}
+
+.apptext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    z-index: 9
+}
+
+.Page_btn {
+    display: flex;
+    gap: 1rem;
+    padding-top: 5px;
+    font-size: medium;
+    z-index: 9
+}
+
+.Page_btn p {
+    padding-inline: 5px;
+    padding-block: 3px;
+    border-radius: 5px;
+    z-index: 9
+}
+
+.Page_btn p:hover {
+    cursor: pointer;
+    background-color: #bdbdbd88;
+}
+
+@keyframes navScroll {
+    from {
+        justify-content: space-evenly;
+        color: black;
+        background-color: rgba(255, 255, 255, 0.185);
+
+        box-shadow: inset 0px -10px 10px 4px rgba(252, 252, 252, 0);
+
+    }
+
+    to {
+        justify-content: space-between;
+        color: rgb(70, 240, 70);
+        background-color: rgba(0, 0, 0, 0.842);
+        box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.836);
+
+    }
+}
+
+.search_bar {
+    margin: auto;
+    width: 300px;
+    border: none;
+    height: 40px;
+    box-shadow: 0px 0px 3px #292828;
+    border-radius: 10px;
+    position: sticky;
+    top: 10px;
+    margin-top: 25px;
+    z-index: 10;
+}
+
+.search_bar input {
+    width: 100%;
+    height: 100%;
+    padding-right: 18%;
+    padding-left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.486);
+    border-radius: 10px;
+    background-color: rgba(167, 167, 167, 0.644) !important;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: large;
+}
+
+.search_bar input:focus {
+    background-color: rgba(167, 167, 167, 0.644) !important;
+    border: none;
+    outline: none;
+}
+
+input:-webkit-autofill {
+    background-color: rgba(167, 167, 167, 0.644) !important;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:focus {
+    background-color: rgba(167, 167, 167, 0.644) !important;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+}
+
+.search_bar button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 15%;
+    height: 98%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.493);
+    z-index: 9;
+    color: rgb(74, 250, 74);
+    font-size: 25px;
+    text-align: right;
+    transition: all 1s;
+    padding-left: 5px;
+}
+
+.search_bar button:hover {
+    cursor: pointer;
+    color: greenyellow;
+
+}
+
+.search_bar button:hover .Search_icon {
+    transform: rotateY(180deg);
+}
+
+.search_bar button .Search_icon {
+    transition: all 0.5s;
+}
+
+#mediaType {
+    min-width: 80px;
+    max-width: auto;
+    border: none;
+    font-size: medium;
+    text-align: center;
+    z-index: 9;
+}
+
+#mediaType:focus {
+    outline: none;
+    border: none;
+}
+
+#mediaType:hover {
+    cursor: pointer;
+}
+
+option,
+optgroup {
+    z-index: 9;
+    padding: 5px;
+    background-color: rgb(53, 55, 71);
+    color: rgb(74, 250, 74);
+
+}
+
+.category_div {
+    display: flex;
+    gap: 5px;
+    padding-inline: 10px;
+    align-items: center;
+    width: 80vw;
+    height: 60px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    box-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.5),
+        inset -10px 0 10px -10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background-color: transparent;
+    margin: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    margin-top: 20px;
+
+}
+
+.category_div button {
+    height: 40px;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.493), rgba(0, 0, 0, 0.164));
+    padding-inline: 5px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 2pxgold;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.349);
+    box-shadow: 2px 2px 4px black;
+    scale: 0.9;
+    transition: all 0.3s;
+    font-size: large;
+}
+
+.category_div button:hover {
+    scale: 1.1;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0px 0px 6px rgb(255, 0, 0);
+
+}
+
+.span_Image {
+    position: relative;
+    text-align: left;
+}
+
+.like_icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    background-color: rgba(240, 29, 64, 0.692);
+    font-size: large;
+    opacity: 0;
+    z-index: 1;
+    text-align: center;
+}
+
+.span_Image img,
+.span_Image video {
+    animation: showimg linear;
+    animation-timeline: view();
+    animation-range: entry 0;
+}
+
+
+@keyframes showimg {
+    from {
+        scale: 0.9;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+.span_Image img:hover,
+.span_Image video:hover {
+    z-index: 1;
+    box-shadow: 0px 0px 8px gold, 6px 6px 8px #000000be;
+}
+
+.video_icon {
+    z-index: 1;
+    position: absolute;
+    left: -10%;
+    top: 45%;
+    width: 50px;
+    height: 50px;
+    transition: all 0.5s;
+    border-radius: 50%;
+    color: #b7dcffa8;
+    background-color: #00000093;
+    padding: 10px;
+    font-size: larger;
+}
+
+.span_video:hover .video_icon {
+    scale: 0;
+}
+
+.span_Image:hover .like_icon {
+    opacity: 1;
+}
+
+.media_card {
+    border: 1px solid rgba(0, 0, 0, 0.507);
+    box-shadow: 6px 6px 8px #000000be;
+}
+
+@media (max-width: 830px) {
+    .search_bar {
+        top: -40px;
+        z-index: 1;
+    }
+}
+
+@media (max-width: 540px) {
+    .navbar {
+        gap: 0px;
+        padding: 0rem 0rem;
+    }
+
+    @keyframes navScroll {
+        from {
+            justify-content: space-between;
+            color: black;
+            background-color: rgba(255, 255, 255, 0.185);
+
+            box-shadow: inset 0px -10px 10px 4px rgba(252, 252, 252, 0);
+
+        }
+
+        to {
+            justify-content: space-between;
+            color: rgb(70, 240, 70);
+            background-color: rgba(0, 0, 0, 0.842);
+            box-shadow: 0px 3px 6px rgba(255, 255, 255, 0.836);
+
+        }
+    }
+}
+
+.pagebtn {
+    touch-action: manipulation;
+    background: none;
+    position: relative;
+    border-width: 4px 12px;
+    border-style: solid;
+    border-color: transparent;
+    padding: 8px 24px;
+    text-align: center;
+    color: #fff;
+    transition-property: transform;
+    transition-duration: 0.4s;
+    font-size: large;
+}
+
+.pagebtn:active {
+    transform: scale(0.92);
+}
+
+.pagebtn-background {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    clip-path: polygon(12px 0, calc(100% - 12px) 0%, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0% calc(100% - 12px), 0% 12px);
+    background-color: saddlebrown;
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.8)), linear-gradient(to bottom, #af6a65, calc(12.5% - 1px), #cfa381, #88312b calc(12.5% + 1px) 50%, #601d2c 50% calc(87.5% - 1px), #994021, #341227 calc(87.5% + 1px));
+    transition-property: filter;
+    transition-duration: 0.2s;
+    will-change: filter;
+}
+
+.pagebtn .pagetext {
+    background: linear-gradient(180deg, #FFE5C2 1%, #CDAF87 100%), #FFFFFF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    z-index: 3;
+    position: relative;
+}
+
+.pagebtn:hover {
+    cursor: pointer;
+}
+
+@media (hover: hover) {
+    .pagebtn:hover .pagebtn-background {
+        filter: brightness(0.8);
+
+    }
+}
+
+.pagebtn:active .pagebtn-background {
+    filter: brightness(0.6);
+}
+
+.pagebtn-border {
+
+    position: absolute;
+    z-index: 1;
+    inset: -4px -12px;
+}
+
+@supports (-webkit-mask-box-image: inherit) or (mask-border: inherit) {
+    .pagebtn-border {
+        background-image: linear-gradient(to bottom, #bb9d7a 50%, #806d56 50%);
+        -webkit-mask-box-image-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border.svg");
+        -webkit-mask-box-image-slice: 15 23;
+        -webkit-mask-box-image-width: 15px 23px;
+        -webkit-mask-box-image-repeat: repeat;
+        mask-border-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border.svg");
+        mask-border-slice: 15 23;
+        mask-border-width: 15px 23px;
+        mask-border-repeat: repeat;
+    }
+}
+
+@supports not ((-webkit-mask-box-image: inherit) or (mask-border: inherit)) {
+    .pagebtn-border {
+        border-width: 15px 23px;
+        border-style: solid;
+        border-color: transparent;
+        border-image-source: url("https://csspro.com/css-3d-buttons/buttons-img/baldurs-gate-3-border-inverted.svg");
+        border-image-slice: 15 23;
+        border-image-width: 15px 23px;
+        border-image-repeat: repeat;
+        background-image: linear-gradient(#000, #000), linear-gradient(to bottom, #bb9d7a 50%, #806d56 50%);
+        background-origin: content-box, border-box;
+        background-repeat: no-repeat;
+        filter: url("#remove-black-pagebtn");
+    }
+}
+
+@media (max-width: 460px) {
+    .apptext {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .download-btn {
+        padding: 0;
+        font-size: medium;
+    }
+}
