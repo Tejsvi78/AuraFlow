@@ -29,7 +29,7 @@ const Gallery = () => {
                                     <img
                                         src={item.largeImageURL}
                                         alt="liked"
-                                        onClick={() => goTODownload(item.largeImageURL)}
+                                        onClick={() =>{setMediaType('Image'), goTODownload(item.largeImageURL)}}
                                         className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                                     />
                                     <button onClick={() => removeFromLike(item)} className='like_icon'>
@@ -42,7 +42,7 @@ const Gallery = () => {
                                     <video
                                         src={item.videos.tiny.url}
                                         controls
-                                        onClick={() => goTODownload(item.videos?.tiny?.url, item.videos?.tiny?.thumbnail, item.videos?.large?.url)}
+                                         onClick={() =>{setMediaType('Video'), goTODownload(item.videos?.tiny?.url, item.videos?.tiny?.thumbnail, item.videos?.large?.url)}}
                                         className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                                     />
                                     <button onClick={() => removeFromLike(item)} className='like_icon'>
