@@ -7,7 +7,7 @@ import { FaSearch } from "react-icons/fa";
 const Searchbar = () => {
     const { setQuery, navigate } = useContext(AppContext)
     const [searchValue, setSearchValue] = useState("")
-    function searchHandler(e) {
+    function searchHandler() {
         setQuery(searchValue);
         navigate('/')
     }
