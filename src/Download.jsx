@@ -9,7 +9,7 @@ const Download = () => {
     function imgForDownload() {
         return (
             <img src={largeImageURL} alt=""
-                className='rounded-xl  mx-auto'
+                className='rounded-xl  mx-auto'k
             />
         )
     }

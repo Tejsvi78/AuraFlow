@@ -30,3 +30,8 @@ const Searchbar = () => {
     )
 }
 export default Searchbar
+
+
+// "homepage": "https://Tejsvi78.github.io/AuraFlow/",
+//   "predeploy": "npm run build",
+//     "deploy": "gh-pages -d dist"

@@ -6,7 +6,7 @@ import { qrcode } from 'vite-plugin-qrcode'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react(), qrcode()],
-  base: "/AuraFlow",
+  // base: "/AuraFlow",
   server: {
     host: true,
     port: 5173
