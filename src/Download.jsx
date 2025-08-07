@@ -1,15 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { AppContext } from './AppContext'
 import './App.css'
 import { toast } from 'react-hot-toast'
 const Download = () => {
-    const { largeImageURL, mediaType, posterUrl, navigate, downloadURL, buttonStyle } = useContext(AppContext)
+    const { largeImageURL, downloadMediaType, posterUrl, navigate, downloadURL, buttonStyle } = useContext(AppContext)
 
 
     function imgForDownload() {
         return (
             <img src={largeImageURL} alt=""
-                className='rounded-xl  mx-auto'k
+                className='rounded-xl  mx-auto' k
             />
         )
     }
@@ -27,7 +27,7 @@ const Download = () => {
     }
     const handleDownload = async () => {
         try {
-            const saveURL = mediaType === 'Image' ? (largeImageURL) : (downloadURL);
+            const saveURL = downloadMediaType === 'Image' ? (largeImageURL) : (downloadURL);
             const response = await fetch(saveURL, { mode: 'cors' }); // Ensure CORS allowed
             const blob = await response.blob();
             const blobUrl = window.URL.createObjectURL(blob);
@@ -44,7 +44,7 @@ const Download = () => {
             window.URL.revokeObjectURL(blobUrl);
 
         } catch (error) {
-            // console.error("Download failed:", error);
+            console.error("Download failed:", error);
             toast.error('Failed to download')
             alert("Failed to download.");
         }
@@ -66,7 +66,7 @@ const Download = () => {
                 </div>
                 <div className=' mt-[20px] mb-[20px] mx-[5px] shadow-[0px_0px_4px_black] rounded-xl'>
                     {
-                        mediaType === "Image" ? imgForDownload() : videoForDownload()
+                        downloadMediaType === "Image" ? imgForDownload() : videoForDownload()
                     }
                 </div>
             </div>

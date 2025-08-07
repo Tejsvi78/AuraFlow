@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './App.css'
 import { IoVideocam } from "react-icons/io5";
@@ -15,6 +15,7 @@ export default function AppContextProvider({ children }) {
     const [pageNo, setPageNo] = useState(1);
     const [imgData, setImgData] = useState([]);
     const [mediaType, setMediaType] = useState('Image');
+    const [downloadMediaType, setDownloadMediaType] = useState('');
     const [largeImageURL, setLargeImageURL] = useState("");
     const [posterUrl, setPosterUrl] = useState("");
     const [downloadURL, setDownloadURL] = useState("");
@@ -29,8 +30,6 @@ export default function AppContextProvider({ children }) {
     const BASE_VIDEO_URL = "https://pixabay.com/api/videos/";
     const API_KEY = "50778325-8a9ba1f38abf343c0e0b1f85b";
 
-    const fetchDefaultImages = `${BASE_IMAGE_URL}?key=${API_KEY}&q=&image_type=all&safesearch=true&per_page=50&page=`;
-    const fetchDefaultVideos = () => `${BASE_VIDEO_URL}?key=${API_KEY}&q=&safesearch=true&per_page=50&page=`;
 
     const fetchImages = ({ q = "", type = "all", categories = "", orient = "", pageno = 1 } = {}) =>
         `${BASE_IMAGE_URL}?key=${API_KEY}&q=${encodeURIComponent(q)}&image_type=${type}&category=${categories}&orientation=${orient}&safesearch=true&per_page=25&page=${pageno}`;
@@ -101,7 +100,7 @@ export default function AppContextProvider({ children }) {
                     imgData[0]?.hits?.map((img) => {
                         return <span className=" break-inside-avoid span_Image " key={img.id}>
                             <img
-                                onClick={() => goTODownload(img.largeImageURL)}
+                                onClick={() => { setDownloadMediaType('Image'), goTODownload(img.largeImageURL) }}
                                 src={img.webformatURL}
                                 className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                             />
@@ -135,7 +134,7 @@ export default function AppContextProvider({ children }) {
                                     e.target.pause();
                                     e.target.currentTime = 0;
                                 }}
-                                onClick={() => goTODownload(vdo.videos?.tiny?.url, vdo.videos?.tiny?.thumbnail, vdo.videos?.large?.url)}
+                                onClick={() => { setDownloadMediaType('Video'), goTODownload(vdo.videos?.tiny?.url, vdo.videos?.tiny?.thumbnail, vdo.videos?.large?.url) }}
                                 className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                             >
                                 <source src={vdo.videos?.tiny?.url} type="video/mp4" />
@@ -188,7 +187,7 @@ export default function AppContextProvider({ children }) {
 
 
             } catch (err) {
-                // console.log("Data Not Found....", err);
+                console.log("Data Not Found....", err);
             }
         }
         await fetchImg();
@@ -204,9 +203,11 @@ export default function AppContextProvider({ children }) {
     useEffect(() => {
 
         const fetchData = async () => {
-
-            await fetchMediaCards();
-
+            try {
+                await fetchMediaCards();
+            } catch (error) {
+                console.error("Error fetching media cards:", error);
+            }
         };
         fetchData();
         // console.log('final imgData data before show Cards..', imgData);
@@ -220,7 +221,7 @@ export default function AppContextProvider({ children }) {
         type, setType,
         category, setCategory,
         orientation, setOrientation,
-        pageNo, setPageNo, posterUrl, navigate, downloadURL, likedItems, goTODownload, setLikedItems, buttonStyle,
+        pageNo, setPageNo, posterUrl, navigate, downloadURL, likedItems, goTODownload, setLikedItems, buttonStyle, downloadMediaType, setDownloadMediaType,
         imgData, mediaType, setMediaType, changeHandler, fetchMediaCards, showImageCard, showVideoCard, largeImageURL
     };
     return <AppContext.Provider value={value}>

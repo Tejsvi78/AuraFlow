@@ -3,7 +3,7 @@ import { AppContext } from './AppContext';
 import { toast } from 'react-hot-toast'
 
 const Gallery = () => {
-    const { likedItems, goTODownload, setLikedItems, buttonStyle,setMediaType } = useContext(AppContext);
+    const { likedItems, goTODownload, setLikedItems, buttonStyle, setDownloadMediaType, navigate } = useContext(AppContext);
     const likedList = Object.values(likedItems);
     const removeFromLike = (item) => {
         setLikedItems(prev => {
@@ -15,7 +15,12 @@ const Gallery = () => {
     };
     return (
         <div >
-            <p className='pagebtn w-[150px] h-[50px] mx-auto mt-[20px]'>{buttonStyle("Gallery")}</p>
+            <div className='flex justify-between w-[90%]'>
+                <button onClick={() => navigate(-1)} className='pagebtn w-[150px] h-[50px] mx-auto mt-[20px]' role="button">
+                    {buttonStyle("←Back")}
+                </button>
+                <p className='pagebtn w-[150px] h-[50px] mx-auto mt-[20px]'>{buttonStyle("Gallery")}</p>
+            </div>
 
             {likedList.length === 0 ? (
                 <p className="text-center mt-4 text-gray-500">No liked items yet.</p>
@@ -29,7 +34,7 @@ const Gallery = () => {
                                     <img
                                         src={item.largeImageURL}
                                         alt="liked"
-                                        onClick={() =>{setMediaType('Image'), goTODownload(item.largeImageURL)}}
+                                        onClick={() => { setDownloadMediaType('Image'), goTODownload(item.largeImageURL) }}
                                         className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                                     />
                                     <button onClick={() => removeFromLike(item)} className='like_icon'>
@@ -42,7 +47,7 @@ const Gallery = () => {
                                     <video
                                         src={item.videos.tiny.url}
                                         controls
-                                        onClick={() =>{setMediaType('Video'), goTODownload(item.videos?.tiny?.url, item.videos?.tiny?.thumbnail, item.videos?.large?.url)}}
+                                        onClick={() => { setDownloadMediaType('Video'), goTODownload(item.videos?.tiny?.url, item.videos?.tiny?.thumbnail, item.videos?.large?.url) }}
                                         className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                                     />
                                     <button onClick={() => removeFromLike(item)} className='like_icon'>
