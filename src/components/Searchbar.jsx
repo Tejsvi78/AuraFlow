@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../App.css'
 import { useContext } from 'react'
 import { AppContext } from '../AppContext'
@@ -32,6 +32,3 @@ const Searchbar = () => {
 export default Searchbar
 
 
-// "homepage": "https://Tejsvi78.github.io/AuraFlow/",
-//   "predeploy": "npm run build",
-//     "deploy": "gh-pages -d dist"

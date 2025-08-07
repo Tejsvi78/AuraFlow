@@ -3,7 +3,9 @@ import { AppContext } from './AppContext';
 import { toast } from 'react-hot-toast'
 
 const Gallery = () => {
+
     const { likedItems, goTODownload, setLikedItems, buttonStyle, setDownloadMediaType, navigate } = useContext(AppContext);
+
     const likedList = Object.values(likedItems);
     const removeFromLike = (item) => {
         setLikedItems(prev => {
@@ -35,6 +37,7 @@ const Gallery = () => {
                                         src={item.largeImageURL}
                                         alt="liked"
                                         onClick={() => { setDownloadMediaType('Image'), goTODownload(item.largeImageURL) }}
+
                                         className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                                     />
                                     <button onClick={() => removeFromLike(item)} className='like_icon'>
@@ -48,6 +51,7 @@ const Gallery = () => {
                                         src={item.videos.tiny.url}
                                         controls
                                         onClick={() => { setDownloadMediaType('Video'), goTODownload(item.videos?.tiny?.url, item.videos?.tiny?.thumbnail, item.videos?.large?.url) }}
+
                                         className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
                                     />
                                     <button onClick={() => removeFromLike(item)} className='like_icon'>
