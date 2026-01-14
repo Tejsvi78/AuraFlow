@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
@@ -35,5 +37,17 @@
     "tailwindcss": "^4.1.11",
     "vite": "^7.0.4",
     "vite-plugin-qrcode": "^0.3.0"
+  },
+  "description": "AuraFlow is a lightweight and fast image search application built using React, Vite, and Tailwind CSS. It allows users to search high-quality images using the Pixabay API, like or unlike them using local storage, and download selected images. The application is fully responsive and includes QR code support for mobile testing.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tejsvi78/AuraFlow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tejsvi78/AuraFlow/issues"
   }
 }
