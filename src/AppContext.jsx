@@ -102,7 +102,7 @@ export default function AppContextProvider({ children }) {
                             <img
                                 onClick={() => { setDownloadMediaType('Image'), goTODownload(img.largeImageURL) }}
                                 src={img.webformatURL}
-                                className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
+                                className="w-full min-w-[280px] min-h-[180px]  h-auto rounded-xl shadow-md mt-5 bg-gray-200 media_card "
                             />
                             <button onClick={() => toggleLike(img)} className='like_icon'>
                                 {likedItems[img.id] ? '❤' : '🤍'}
@@ -135,7 +135,7 @@ export default function AppContextProvider({ children }) {
                                     e.target.currentTime = 0;
                                 }}
                                 onClick={() => { setDownloadMediaType('Video'), goTODownload(vdo.videos?.tiny?.url, vdo.videos?.tiny?.thumbnail, vdo.videos?.large?.url) }}
-                                className="w-full h-auto rounded-xl shadow-md mt-5 media_card "
+                                className="w-full min-w-[280px] min-h-[180px] h-auto rounded-xl shadow-md mt-5 bg-gray-200 media_card "
                             >
                                 <source src={vdo.videos?.tiny?.url} type="video/mp4" />
                                 Your browser does not support the video tag.
